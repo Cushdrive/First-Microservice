@@ -1,0 +1,28 @@
+zuul:
+  routes:
+    api:
+      path: /api/**
+      serviceId: BOOKMARK-SERVICE
+      strip-prefix: false
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka
+
+bookmark-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    DeploymentContextBasedVipAddress: bookmark-service
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+    ServerListRefreshInterval: 2000
+
+logging:
+  level:
+    org.springframework: 'DEBUG'

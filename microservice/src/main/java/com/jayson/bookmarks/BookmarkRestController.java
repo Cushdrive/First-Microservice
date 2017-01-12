@@ -15,7 +15,7 @@ import java.util.Collection;
  * Created by jayson on 11/5/16.
  */
 @RestController
-@RequestMapping("/{userId}/bookmarks")
+@RequestMapping("/api/{userId}/bookmarks")
 public class BookmarkRestController {
     private static final Logger log = LoggerFactory.getLogger(BookmarkRestController.class);
     private final BookmarkRepository bookmarkRepository;
