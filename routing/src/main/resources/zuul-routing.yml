@@ -1,9 +1,13 @@
 zuul:
+  RibbonRoutingFilter:
+    route:
+      disable: true
+  ignoredServices: '*'
   routes:
     api:
-      path: /api/**
-      serviceId: BOOKMARK-SERVICE
-      strip-prefix: false
+      path: /api/mytopbookmark*
+      serviceId: bookmark-service
+      stripPrefix: false
 
 ribbon:
   eureka:
