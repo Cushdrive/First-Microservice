@@ -58,7 +58,7 @@ public class MicroserviceClientApplication {
         Bookmark bm;
 
         bm = this.restTemplate.getForObject(
-                String.format("http://bookmark-service/%s/bookmarks/1",username),Bookmark.class
+                String.format("http://bookmark-service/%s/treatment/1",username),Bookmark.class
         );
 
         return bm.toString();

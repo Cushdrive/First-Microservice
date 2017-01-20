@@ -1,0 +1,55 @@
+zuul:
+  RibbonRoutingFilter:
+    route:
+      disable: true
+  ignoredServices: '*'
+  routes:
+    api:
+      path: /api/mylasttreatment*
+      serviceId: treatment-service
+      stripPrefix: false
+
+security:
+  user:
+    password: password
+  oauth2:
+      client:
+        accessTokenUri: https://bax-poc.auth0.com/oauth/token
+        userAuthorizationUri: https://bax-poc.auth0.com/authorize
+        clientId: dGw3NGiSRwVn4mUcyJFwJKuxjI1M1zbi
+        clientSecret: KVYprL0DWKBDmgMjQi3DaMO1THCcpwadLGCidmqTAbTe-EyVvwL6UYZqo0nFrpyu
+      resource:
+        jwt:
+          keyValue: |
+            -----BEGIN PUBLIC KEY-----
+            MIIC6jCCAdKgAwIBAgIJIjEEj04CtSX3MA0GCSqGSIb3DQEBBQUAMBwxGjAYBgNVBAMTEWJheC1wb2MuYXV0aDAuY29tMB4XDTE3MDEwOTE5MDEyNFoXDTMwMDkxODE5MDEyNFowHDEaMBgGA1UEAxMRYmF4LXBvYy5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDTv/gPEpL68cwN5AwJ+F3XTot8OTIgY3JkY0fc6EDSjdzQ9Tu6LbTe1moPlXahYHGTKq6zWPRkNiXvi7v1mkoVMeCijBlzAxjE2NQ2otzMmqmQ4VdHU290j/mHzuvPCwkcqonSe0biQcmYJCX1aZ2LxlcMuxX6GhAoUoPjDcDw0I7Vydo9DAwOdjh5FhPw30rpZvaTyVjNjU1D2dOKOzBYUubxCna7Iuq1NZtm+f8lqSxF01O/onpKdJ5CfDmwAolQIsvH/MNUfoAtsiOxPv9plj83p7kHJBTjLP5MkdnvAqu4ziMpUPc+xJbtMzff2qZ2zFW26XIY9tpGfpLCzHiRAgMBAAGjLzAtMAwGA1UdEwQFMAMBAf8wHQYDVR0OBBYEFBuYzH2sAuw/RWQnu5N0g2LDwhE5MA0GCSqGSIb3DQEBBQUAA4IBAQDNW7BODTf9cm50nm5zLZLdXZhFddLtASAZEHSdVjwhuLsvyjXpsEnd+yqZLGsSNaV5CEZU+KUVT6vk7E13t3dTZ6oad38H1TuWCPY6vl6bmru7KbNw3mQUPimA9uyLQ/ZI58DjIW3kpPLkFdopp2lKsRnr1N3R5kEYUrNCq/XjU3XoiD459VfprqjoZpJj5bYLpUCMHmOrdlZIFbRMp1iUyYTRhRdDQS1/fM+v0VETmy6lcvGCKeTcydeJCnK/DFcxEg2Tq9D3vAhcfC6wtWtk7YU1tkspBmyMDLTJtN2zuqS5g60wD0cZKpCUVZoj4g28nXknrwRAGnUTudVsioYW
+            -----END PUBLIC KEY-----
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  aop:
+    proxy-target-class: true
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka
+
+treatment-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    DeploymentContextBasedVipAddress: treatment-service
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+    ServerListRefreshInterval: 2000
+
+logging:
+  level:
+    org.springframework: 'DEBUG'

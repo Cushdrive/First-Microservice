@@ -5,9 +5,41 @@ zuul:
   ignoredServices: '*'
   routes:
     api:
-      path: /api/mytopbookmark*
-      serviceId: bookmark-service
+      path: /api/mylasttreatment*
+      serviceId: treatment-service
       stripPrefix: false
+      sensitive-headers:
+
+security:
+  user:
+    password: none
+  oauth2:
+      client:
+        accessTokenUri: https://bax-poc.auth0.com/oauth/token
+        userAuthorizationUri: https://bax-poc.auth0.com/authorize
+        clientId: dGw3NGiSRwVn4mUcyJFwJKuxjI1M1zbi
+        preEstablishedRedirectUri: http://localhost:3000/login
+        registeredRedirectUri: http://localhost:3000/login
+        useCurrentUri: false
+        clientSecret: KVYprL0DWKBDmgMjQi3DaMO1THCcpwadLGCidmqTAbTe-EyVvwL6UYZqo0nFrpyu
+      resource:
+            jwt:
+              keyValue: |
+                -----BEGIN RSA PUBLIC KEY-----
+                MIIBCgKCAQEA07/4DxKS+vHMDeQMCfhd106LfDkyIGNyZGNH3OhA0o3c0PU7ui20
+                3tZqD5V2oWBxkyqus1j0ZDYl74u79ZpKFTHgoowZcwMYxNjUNqLczJqpkOFXR1Nv
+                dI/5h87rzwsJHKqJ0ntG4kHJmCQl9Wmdi8ZXDLsV+hoQKFKD4w3A8NCO1cnaPQwM
+                DnY4eRYT8N9K6Wb2k8lYzY1NQ9nTijswWFLm8Qp2uyLqtTWbZvn/JaksRdNTv6J6
+                SnSeQnw5sAKJUCLLx/zDVH6ALbIjsT7/aZY/N6e5ByQU4yz+TJHZ7wKruM4jKVD3
+                PsSW7TM339qmdsxVtulyGPbaRn6Swsx4kQIDAQAB
+                -----END RSA PUBLIC KEY-----
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  aop:
+    proxy-target-class: true
 
 ribbon:
   eureka:
@@ -18,10 +50,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka
 
-bookmark-service:
+treatment-service:
   ribbon:
     NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
-    DeploymentContextBasedVipAddress: bookmark-service
+    DeploymentContextBasedVipAddress: treatment-service
     MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 1
     OkToRetryOnAllOperations: true

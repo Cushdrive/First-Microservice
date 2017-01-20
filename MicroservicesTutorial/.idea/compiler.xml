@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="config" />
+        <module name="DateTimeSandbox" />
         <module name="discover" />
         <module name="feign-client" />
         <module name="microservice" />
@@ -34,6 +35,7 @@
     <bytecodeTargetLevel>
       <module name="auth-server" target="1.8" />
       <module name="config" target="1.8" />
+      <module name="DateTimeSandbox" target="1.5" />
       <module name="discover" target="1.8" />
       <module name="feign-client" target="1.8" />
       <module name="microservice" target="1.8" />

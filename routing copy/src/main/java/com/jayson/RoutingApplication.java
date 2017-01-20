@@ -1,6 +1,6 @@
 package com.jayson;
 
-import com.jayson.com.jayson.filter.ZFilter_FirstTreatmentRoute;
+import com.jayson.com.jayson.filter.FilterFirstBookmarkRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -35,7 +35,7 @@ public class RoutingApplication {
     @Bean
     public RibbonRoutingFilter ribbonRoutingFilter(ProxyRequestHelper helper,
                                                    RibbonCommandFactory<?> ribbonCommandFactory) {
-        RibbonRoutingFilter filter = new ZFilter_FirstTreatmentRoute(helper, ribbonCommandFactory, this.requestCustomizers);
+        RibbonRoutingFilter filter = new FilterFirstBookmarkRoute(helper, ribbonCommandFactory, this.requestCustomizers);
         return filter;
     }
 }
