@@ -92,7 +92,7 @@ public class ZFilter_FirstTreatmentRoute extends RibbonRoutingFilter{
             if (!CollectionUtils.isEmpty(queryparams) && queryparams.containsKey("username")) {
                 String un = queryparams.get("username").get(0).toString();
                 //newURI = oldUri.getProtocol() + "://" + oldURL.getHost() + port + "/api/" + un + "/bookmarks/1";
-                newURI = "/api/jbender/bookmarks/1";
+                newURI = "/api/jbender/treatments/1";
             }
         }
         catch (URISyntaxException ex) {

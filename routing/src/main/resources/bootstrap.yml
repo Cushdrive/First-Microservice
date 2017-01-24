@@ -2,11 +2,11 @@
 spring:
   application:
     name: zuul-server
+  profiles:
+      active: default
+  cloud:
+    config:
+      uri: http://localhost:8889/
 
 server:
     port: 8890
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:1111/eureka
