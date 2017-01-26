@@ -23,7 +23,6 @@ public class MicroserviceApplication {
     private DateTimeGen dateTimeGenerator;
 
 	public static void main(String[] args) {
-        System.setProperty("spring.config.name", "microservice");
 		SpringApplication.run(MicroserviceApplication.class, args);
 	}
 

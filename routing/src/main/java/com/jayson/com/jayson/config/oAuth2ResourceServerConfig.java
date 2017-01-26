@@ -22,9 +22,8 @@ public class oAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
-                .anonymous().disable()
-                .requestMatchers().antMatchers("/api/**").and()
                 .authorizeRequests()
-                    .antMatchers("/**").access("#oauth2.hasScope('poc-application')");
+                    .antMatchers("/**").permitAll()
+                    .antMatchers("/api/**").access("#oauth2.hasScope('poc-application')");
     }
 }

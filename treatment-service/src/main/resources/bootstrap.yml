@@ -1,9 +1,8 @@
-#Configure the zuul server
 spring:
   application:
-    name: zuul-server
+    name: treatment-service
   #profiles:
-      #active: default #Changing this value will cause other configurations to be loaded.
+    #active: default #Changing this value will cause other configurations to be loaded.
   cloud:
     consul:
       config:

@@ -34,7 +34,6 @@ public class RoutingApplication {
     private List<RibbonRequestCustomizer> requestCustomizers = Collections.emptyList();
 
     public static void main(String[] args) {
-        System.setProperty("spring.config.name", "zuul-routing");
         SpringApplication.run(RoutingApplication.class, args);
     }
 
