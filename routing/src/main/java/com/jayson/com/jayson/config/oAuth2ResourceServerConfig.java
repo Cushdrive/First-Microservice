@@ -12,7 +12,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Configuration
 @EnableResourceServer
 public class oAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
-    private static final String POC_RESOURCE_ID = "gateway";
+    //This must match the "aud" field in the oauth id token.
+    private static final String POC_RESOURCE_ID = "t7ESkB0TUyxjgtNgd3TMp97YFlQBQQOa";
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

@@ -63,7 +63,7 @@ public class ZFilter_FirstTreatmentRoute extends RibbonRoutingFilter{
 
     @Override
     public boolean shouldFilter() {
-        return true;
+        return super.shouldFilter();
     }
 
     @Override
@@ -94,15 +94,14 @@ public class ZFilter_FirstTreatmentRoute extends RibbonRoutingFilter{
                 //newURI = oldUri.getProtocol() + "://" + oldURL.getHost() + port + "/api/" + un + "/bookmarks/1";
                 newURI = "/api/jbender/treatments/1";
             }
-        }
-        catch (URISyntaxException ex) {
+        } catch (URISyntaxException ex) {
             //Nom Nom Nom
         }
 
         // remove double slashes
         newURI = newURI.replace("//", "/");
 
-        long contentLength = useServletThirtyOne ? request.getContentLengthLong(): request.getContentLength();
+        long contentLength = useServletThirtyOne ? request.getContentLengthLong() : request.getContentLength();
 
         return new RibbonCommandContext(serviceId, verb, newURI, retryable, headers, params,
                 requestEntity, this.requestCustomizers, contentLength);

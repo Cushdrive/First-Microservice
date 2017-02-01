@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class oAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
     //This will get updated once we implement the Client Credentials Grant.
-    private static final String POC_RESOURCE_ID = "gateway";
+    private static final String POC_RESOURCE_ID = "t7ESkB0TUyxjgtNgd3TMp97YFlQBQQOa";
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
